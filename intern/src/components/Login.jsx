@@ -72,11 +72,7 @@ const Login = () => {
             const isOtpCorrect = otpDigits.join("") === otp;
             if (isOtpCorrect) {
                 alert("welcome")
-                // Clear phone number and OTP
-                // setPhoneNumber("");
                 setOtp("");
-
-                // Reset OTP digits
                 setOtpDigits(["", "", "", "", "", ""]);
                 setVerfication(true)
             }
@@ -209,80 +205,80 @@ const Login = () => {
                             </div>
                         </div>
                     ) : (
+
                         <div>
-                            <div>
-                                <div className='h-96 bg-indigo-500 flex justify-center items-center rounded-b-[30px] border-2 border-cyan-300'>
-                                    <div className='flex justify-center items-center flex-col'>
-                                        <div className='absolute top-8 right-9  lg:top-10 lg:right-20'>
-                                            <IoMdClose size={30} className='text-white' />
-                                        </div>
-
-                                        <div>
-                                            <h1 className='text-white text-5xl font-bold tracking-widest font-serif'>ebo</h1>
-                                        </div>
-                                        <div>
-                                            <p className='text-white text-2xl font-medium'>celebration ho toh ebo!</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className='mt-5 ml-3 mr-3'>
-                                    <div className='text-lg font-medium text-zinc-700'>
-                                        <span>Enter OTP </span>
-                                        <span>send to {phoneNumber}</span>
-                                        <span className='ml-2 text-xs font-bold text-indigo-600 cursor-pointer' onClick={editPhoneNumber}>Edit</span>
-                                        <p className='border-b-[3px] border-indigo-600 w-20 mt-1 mb-4 rounded'></p>
+                            <div className='h-96 bg-indigo-500 flex justify-center items-center rounded-b-[30px] border-2 border-cyan-300'>
+                                <div className='flex justify-center items-center flex-col'>
+                                    <div className='absolute top-8 right-9  lg:top-10 lg:right-20'>
+                                        <IoMdClose size={30} className='text-white' />
                                     </div>
 
-                                    <div className='flex mt-6 justify-between sm:justify-normal space-x-2'>
-                                        {otpDigits.map((digit, index) => (
-                                            <input
-                                                autoFocus={index == 0}
-                                                key={index}
-                                                type='text'
-                                                maxLength='1'
-                                                value={digit}
-                                                onChange={(e) => handleOtpDigitchange(index, e.target.value)}
-                                                className='p-4 h-12 w-12 sm:w-16 sm:h-16 text-center border border-slate-500 rounded-[10px] focus:outline-none font-medium tracking-wider'
-                                                onKeyUp={(e) => {
-                                                    if (e.key === 'Backspace') {
-                                                        e.preventDefault();
-                                                        handleBackspace(index)
-                                                    }
-                                                }}
-                                                ref={inputRefs[index]}
-                                            />
-                                        ))}
-
+                                    <div>
+                                        <h1 className='text-white text-5xl font-bold tracking-widest font-serif'>ebo</h1>
                                     </div>
-
-                                    <div className='flex flex-col'>
-                                        <div className='text-center sm:text-left'>
-                                            <p className='mt-6'>Didn't receive the OTP? Verify via</p>
-                                        </div>
-                                        <div className='flex mt-5 justify-between  sm:justify-normal sm:space-x-4 items-center'>
-                                            <div className='border-2 rounded-lg flex items-center justify-center p-0.5 sm:p-2'>
-                                                <MdOutlineTextsms className='mr-1 sm:mr-3' />
-                                                <p className='font-medium'>Resend SMS</p>
-                                            </div>
-                                            <div className='border-2 rounded-lg flex items-center p-0.5 sm:p-2'>
-                                                <IoLogoWhatsapp className='mr-1 sm:mr-3' color={'green'} />
-                                                <p className='font-medium'>Whatsapp</p>
-
-                                            </div>
-                                            <div className='border-2 rounded-lg flex items-center p-0.5 sm:p-2'>
-                                                <MdOutlineLocalPhone className='mr-1 sm:mr-3' />
-                                                <p className='font-medium'>OTP on call</p>
-                                            </div>
-                                        </div>
+                                    <div>
+                                        <p className='text-white text-2xl font-medium'>celebration ho toh ebo!</p>
                                     </div>
-
-                                    <button className='border rounded-[10px] mt-5 items-center bg-indigo-500 my-8 p-2 text-center text-white font-semibold text-lg cursor-pointer w-full sm:w-[37%]' onClick={handleVerify}>
-                                        Verify & Proceed
-                                    </button>
-
                                 </div>
                             </div>
+                            <div className='mt-5 ml-3 mr-3'>
+                                <div className='text-lg font-medium text-zinc-700'>
+                                    <span>Enter OTP </span>
+                                    <span>send to {phoneNumber}</span>
+                                    <span className='ml-2 text-xs font-bold text-indigo-600 cursor-pointer' onClick={editPhoneNumber}>Edit</span>
+                                    <p className='border-b-[3px] border-indigo-600 w-20 mt-1 mb-4 rounded'></p>
+                                </div>
+
+                                <div className='flex mt-6 justify-between sm:justify-normal space-x-2'>
+                                    {otpDigits.map((digit, index) => (
+                                        <input
+                                            autoFocus={index == 0}
+                                            key={index}
+                                            type='text'
+                                            maxLength='1'
+                                            value={digit}
+                                            onChange={(e) => handleOtpDigitchange(index, e.target.value)}
+                                            className='p-4 h-12 w-12 sm:w-16 sm:h-16 text-center border border-slate-500 rounded-[10px] focus:outline-none font-medium tracking-wider'
+                                            onKeyUp={(e) => {
+                                                if (e.key === 'Backspace') {
+                                                    e.preventDefault();
+                                                    handleBackspace(index)
+                                                }
+                                            }}
+                                            ref={inputRefs[index]}
+                                        />
+                                    ))}
+
+                                </div>
+
+                                <div className='flex flex-col'>
+                                    <div className='text-center sm:text-left'>
+                                        <p className='mt-6'>Didn't receive the OTP? Verify via</p>
+                                    </div>
+                                    <div className='flex mt-5 justify-between  sm:justify-normal sm:space-x-4 items-center'>
+                                        <div className='border-2 rounded-lg flex items-center justify-center p-0.5 sm:p-2'>
+                                            <MdOutlineTextsms className='mr-1 sm:mr-3' />
+                                            <p className='font-medium'>Resend SMS</p>
+                                        </div>
+                                        <div className='border-2 rounded-lg flex items-center p-0.5 sm:p-2'>
+                                            <IoLogoWhatsapp className='mr-1 sm:mr-3' color={'green'} />
+                                            <p className='font-medium'>Whatsapp</p>
+
+                                        </div>
+                                        <div className='border-2 rounded-lg flex items-center p-0.5 sm:p-2'>
+                                            <MdOutlineLocalPhone className='mr-1 sm:mr-3' />
+                                            <p className='font-medium'>OTP on call</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button className='border rounded-[10px] mt-5 items-center bg-indigo-500 my-8 p-2 text-center text-white font-semibold text-lg cursor-pointer w-full sm:w-[37%]' onClick={handleVerify}>
+                                    Verify & Proceed
+                                </button>
+
+                            </div>
                         </div>
+
                     )}
                 </div>
 
