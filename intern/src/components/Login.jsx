@@ -15,7 +15,7 @@ const Login = () => {
     const [showOtpInput, setShowOtpInput] = useState(true);
     const [otpDigits, setOtpDigits] = useState(["", "", "", "", "", ""]);
     const [verification, setVerfication] = useState(false);
-    // const [userPhoneNumber, setUserPhoneNumber] = useState(['7484815513', '1234567890', '0987654321'])
+    const [userPhoneNumber, setUserPhoneNumber] = useState(['7484815513', '1234567890', '0987654321'])
     const [otp, setOtp] = useState("");
 
     const phone = (e) => {
@@ -71,10 +71,14 @@ const Login = () => {
         if (otp.length === 6) {
             const isOtpCorrect = otpDigits.join("") === otp;
             if (isOtpCorrect) {
-                alert("welcome")
-                setOtp("");
-                setOtpDigits(["", "", "", "", "", ""]);
+                if (userPhoneNumber.includes(phoneNumber)) {
+                    alert("welcome!, Your phone number exists")
+                    setOtp("");
+                    setOtpDigits(["", "", "", "", "", ""]);
+                    return;
+                }
                 setVerfication(true)
+
             }
             else {
                 toast.warning("INCORRECT OTP! TRY AGAIN")
@@ -165,7 +169,7 @@ const Login = () => {
                                             type="text"
                                             id="phoneNumber"
                                             name="phoneNumber"
-                                            // placeholder={phoneNumber}
+                    
                                             value={phoneNumber}
                                             readOnly={true}
                                             className="p-2 w-full  bg-gray-100 outline-0 font-extrabold opacity-60 tracking-wider"
